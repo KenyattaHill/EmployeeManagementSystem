@@ -27,4 +27,20 @@ manager_id INT NOT NULL,
 PRIMARY KEY (id)
 );
 
-SELECT * FROM employee_trackerdb.role;
+INSERT INTO department
+(name)
+VALUES
+('Front End'), ('Grocery'), ('Non Foods');
+
+INSERT INTO role
+(title, salary, department_id)
+VALUES
+('clerk', 18000, 1), ('lead', 25000, 2), ('manager', 50000, 3);
+
+INSERT INTO employee 
+(first_name, last_name, role_id, manager_id)
+VALUES
+('Mike', 'Jackson', 1),
+('Jim', 'Davis', 1),
+('Sally', 'Roads', 2, 1),
+('Pete', 'Baker', 3, 2);

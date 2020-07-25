@@ -1,6 +1,5 @@
 
 class Employee {
-
     constructor(orm){
         this.orm = orm;
     }
@@ -10,23 +9,23 @@ class Employee {
     }
 
     getAllByManager(){
-
+return this.orm.getAllByManager('role')
     }
 
     getAllByDepartment() {
-
+return this.orm.getAllByDepartment('department')
     }
 
-    create() {
-
+    create(name) {
+return this.orm.create('employee', ['name'], [name])
     }
 
-    update() {
-
+    update(id, name) {
+return this.orm.update('employee', id, {name})
     }
 
-    delete() {
-
+    delete(id) {
+return this.orm.delete('department', id)
     }
 }
 
