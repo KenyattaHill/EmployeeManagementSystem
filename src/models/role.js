@@ -1,22 +1,33 @@
 
 
 class Role {
-    constructor(orm){
+    constructor(orm) {
         this.orm = orm
     }
-    getAll(){
-        return this.orm.getAll('role');
+    getAll() {
+        const query = `
+        SELECT 
+        r.id,
+        r.title,
+        r.salary,
+        d.name as department
+        from role r
+        JOIN department d on r.department_id = d.id
+        `
+        return this.orm.query(query);
     }
 
-    create(id, name, salary, department_id){
-        return this.orm.create('role', id [name], [salary], [department_id])
+    create({ title, salary, department_id }) {
+        const columns = ['title', 'salary', 'department_id'];
+        const values = [`'${title}'`, salary, department_id];
+        return this.orm.create('role', columns, values)
     }
 
-    update(id, name){
-        return this.orm.update('role', id, {name})
+    update(id, column, value) {
+        return this.orm.update('role', id, column, value)
     }
 
-    delete(id){
+    delete(id) {
         return this.orm.delete('role', id)
     }
 }
